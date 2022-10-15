@@ -21,6 +21,7 @@ const hero = {
     avatar: "images/wizard.png",
     health: 10,
     diceRoll: [3, 1, 4],
+    diceCount: 3,
 }
 
 const monster = {
@@ -29,13 +30,24 @@ const monster = {
     avatar: "images/orc.png",
     health: 10,
     diceRoll: [4],
+    diceCount: 1,
 }
+
+function getDiceRollArray (diceCount) {
+    let diceArray = []
+    for (let i = 0; i < diceCount ; i++){
+        diceArray.push(Math.floor(Math.random() * 6 ))
+    }
+    return diceArray
+}  
+
+console.log(getDiceRollArray(2))
 
 function renderCharacter({elementId,name, avatar, health, diceRoll, diceCount}) {
 
     let diceHtml = diceRoll.map (die => {
         return `<div class="dice">${die}</div>`
-    }).join('')
+    }).join('') //Might cause a bug later on incase that happens put join inside the content in dice cointainer div 
     //If problems later on destructure them here
     document.getElementById(elementId).innerHTML = `
     <div class="character-card">
