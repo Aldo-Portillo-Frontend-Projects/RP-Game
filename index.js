@@ -26,19 +26,50 @@ function getDiceHtml(diceCount) {
     }).join('')
 }
 
-function renderCharacter({elementId,name, avatar, health,  diceCount}) {
-    // //If problems later on destructure them here
+function Character (data) {
+    this.elementId = data.elementId,
+    this.name = data.name,
+    this.avatar = data.avatar,
+    this.health = data.health,
+    this.diceCount = data.diceCount,
+    this.getCharacterHtml = function () {
+        const {elementId,name, avatar, health,  diceCount} = this;
 
-    let diceHtml = getDiceHtml(diceCount)
-    document.getElementById(elementId).innerHTML = `
-    <div class="character-card">
-        <h4 class="name">${name}</h4>
-        <img class="avatar" src="${avatar}"/>
-        <p class="health">health: <b> ${health} </b></p>
-    <div class="dice-container">${diceHtml}</div>
-    </div>
-`
-} 
+        let diceHtml = getDiceHtml(diceCount)
 
-renderCharacter(hero)
-renderCharacter(monster)
+        document.getElementById(elementId).innerHTML = `
+        <div class="character-card">
+            <h4 class="name">${name}</h4>
+            <img class="avatar" src="${avatar}"/>
+            <p class="health">health: <b> ${health} </b></p>
+        <div class="dice-container">${diceHtml}</div>
+        </div>
+        `
+    }
+}
+
+
+const wizard = new Character(hero)
+const orc = new Character(monster)
+
+wizard.getCharacterHtml()
+orc.getCharacterHtml()
+
+
+
+// function renderCharacter({elementId,name, avatar, health,  diceCount}) {
+//     // //If problems later on destructure them here
+
+//     let diceHtml = getDiceHtml(diceCount)
+//     document.getElementById(elementId).innerHTML = `
+//     <div class="character-card">
+//         <h4 class="name">${name}</h4>
+//         <img class="avatar" src="${avatar}"/>
+//         <p class="health">health: <b> ${health} </b></p>
+//     <div class="dice-container">${diceHtml}</div>
+//     </div>
+// `
+// } 
+
+// renderCharacter(hero)
+// renderCharacter(monster)
