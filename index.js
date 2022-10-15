@@ -41,14 +41,23 @@ function getDiceRollArray (diceCount) {
     return diceArray
 }  
 
-console.log(getDiceRollArray(2))
+function getDiceHtml (diceCount) {
+    return getDiceRollArray(diceCount).map(die => {
+        return `<div class="dice">${die}</div>`
+    }).join('')
+}
+
+console.log(getDiceHtml(3))
+
 
 function renderCharacter({elementId,name, avatar, health, diceRoll, diceCount}) {
 
-    let diceHtml = diceRoll.map (die => {
-        return `<div class="dice">${die}</div>`
-    }).join('') //Might cause a bug later on incase that happens put join inside the content in dice cointainer div 
-    //If problems later on destructure them here
+    // let diceHtml = diceRoll.map (die => {
+    //     return `<div class="dice">${die}</div>`
+    // }).join('') //Might cause a bug later on incase that happens put join inside the content in dice cointainer div 
+    // //If problems later on destructure them here
+
+    let diceHtml = getDiceHtml(diceCount)
     document.getElementById(elementId).innerHTML = `
     <div class="character-card">
         <h4 class="name">${name}</h4>
