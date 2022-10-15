@@ -35,7 +35,7 @@ function renderCharacter({elementId,name, avatar, health, diceRoll, diceCount}) 
 
     let diceHtml = diceRoll.map (die => {
         return `<div class="dice">${die}</div>`
-    })
+    }).join('')
     //If problems later on destructure them here
     document.getElementById(elementId).innerHTML = `
     <div class="character-card">
