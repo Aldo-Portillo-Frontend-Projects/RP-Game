@@ -30,10 +30,10 @@ function Character(data) {
     }
 
     this.getCharacterHtml = function () {
-        const { elementId, name, avatar, health, diceCount, getDiceHtml} = this;
+        const { name, avatar, health, diceCount, getDiceHtml} = this;
         let diceHtml = getDiceHtml(diceCount);
 
-        document.getElementById(elementId).innerHTML = `
+        return `
             <div class="character-card">
                 <h4 class="name"> ${name} </h4>
                 <img class="avatar" src="${avatar}" />
@@ -50,7 +50,10 @@ function Character(data) {
 const wizard = new Character(hero)
 const orc = new Character(monster)
 
-wizard.getCharacterHtml()
-orc.getCharacterHtml()
 
+function render () {
+    document.getElementById(wizard.elementId).innerHTML =  wizard.getCharacterHtml()
+    document.getElementById(orc.elementId).innerHTML = orc.getCharacterHtml()   
+}
 
+render()
