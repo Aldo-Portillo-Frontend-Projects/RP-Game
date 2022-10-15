@@ -1,18 +1,20 @@
-const hero = {
-    elementId: "hero",
-    name: "Wizard",
-    avatar: "images/wizard.png",
-    health: 10,
-    diceCount: 3,
+const characterData = {
+    hero: {
+        elementId: "hero",
+        name: "Wizard",
+        avatar: "images/wizard.png",
+        health: 10,
+        diceCount: 3,
+    },
+    monster: {
+        elementId: "monster",
+        name: "Orc",
+        avatar: "images/orc.png",
+        health: 10,
+        diceCount: 1,
+    },
 }
 
-const monster = {
-    elementId: "monster",
-    name: "Orc",
-    avatar: "images/orc.png",
-    health: 10,
-    diceCount: 1,
-}
 
 function getDiceRollArray(diceCount) {
     return new Array(diceCount).fill(0).map(() => {
@@ -47,8 +49,8 @@ function Character(data) {
 
 
 
-const wizard = new Character(hero)
-const orc = new Character(monster)
+const wizard = new Character(characterData.hero)
+const orc = new Character(characterData.monster)
 
 
 function render () {
