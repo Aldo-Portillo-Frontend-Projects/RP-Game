@@ -1,20 +1,4 @@
-const characterData = {
-    hero: {
-        elementId: "hero",
-        name: "Wizard",
-        avatar: "images/wizard.png",
-        health: 10,
-        diceCount: 3,
-    },
-    monster: {
-        elementId: "monster",
-        name: "Orc",
-        avatar: "images/orc.png",
-        health: 10,
-        diceCount: 1,
-    },
-}
-
+import characterData from "./data.js"
 
 function getDiceRollArray(diceCount) {
     return new Array(diceCount).fill(0).map(() => {
