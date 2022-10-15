@@ -14,17 +14,17 @@ const monster = {
     diceCount: 1,
 }
 
-function getDiceHtml (diceCount) {
-    const diceRollArray = new Array(diceCount).fill(0).map(die => {
-        return `<div class="dice">${Math.floor(Math.random() * 6 ) + 1}</div>`
-    }).join('')
-
-
-   
-
-    return diceRollArray
+function getDiceRollArray(diceCount) {
+    return new Array(diceCount).fill(0).map(() => {
+        return Math.floor(Math.random() * 6) + 1
+    })
 }
 
+function getDiceHtml(diceCount) {
+    return getDiceRollArray(diceCount).map(function(num){ 
+        return  `<div class="dice">${num}</div>`
+    }).join('')
+}
 
 function renderCharacter({elementId,name, avatar, health,  diceCount}) {
     // //If problems later on destructure them here
@@ -38,7 +38,7 @@ function renderCharacter({elementId,name, avatar, health,  diceCount}) {
     <div class="dice-container">${diceHtml}</div>
     </div>
 `
-}
+} 
 
 renderCharacter(hero)
 renderCharacter(monster)
