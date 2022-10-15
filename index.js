@@ -21,7 +21,6 @@ const hero = {
     avatar: "images/wizard.png",
     health: 10,
     diceRoll: [3, 1, 4],
-    diceCount: 3,
 }
 
 const monster = {
@@ -30,13 +29,12 @@ const monster = {
     avatar: "images/orc.png",
     health: 10,
     diceRoll: [4],
-    diceCount: 1,
 }
 
 function renderCharacter({elementId,name, avatar, health, diceRoll, diceCount}) {
     let diceHtml = '';
 
-    for (let i = 0; i < diceCount; i++){
+    for (let i = 0; i < diceRoll.length; i++){
         diceHtml += `<div class="dice">${diceRoll[i]}</div>`
     }
     //If problems later on destructure them here
