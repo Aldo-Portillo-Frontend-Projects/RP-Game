@@ -29,7 +29,7 @@ main {
 }
 
 .character-card {
-    height:14rem;
+    height:20rem;
     margin-top: .5rem;
     width:94vw;
     max-width: 230px;
@@ -44,6 +44,10 @@ main {
     border: 0.2rem solid #000721;
     box-shadow: inset 0px 0px 6px 2px rgba(100,100,100,0.2),
                 0px 0px 10px rgba(117,182,214,0.2);
+}
+
+.character-card > img {
+    height: 10rem;
 }
 
 @media(min-width:550px){
