@@ -1,8 +1,6 @@
-import {getDiceRollArray, getDicePlaceholderHtml} from './utils.js'
+import {getDiceRollArray, getDicePlaceholderHtml, getPercent} from './utils.js'
 
-const getpercent = (remainingHealth, maximumHealth) => {
-    return (remainingHealth * 100) / maximumHealth
-}
+
 
 function Character(data) {
     Object.assign(this, data),
@@ -45,7 +43,7 @@ function Character(data) {
             this.health = 0
         }
 
-        console.log(getpercent(this.health, this.maxHealth))
+        console.log(getPercent(this.health, this.maxHealth))
     }
 }
 
