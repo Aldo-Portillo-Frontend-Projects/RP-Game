@@ -10,6 +10,8 @@ function getNewMonster () {
     
 }
 
+let activeButton = true; 
+
 
 function render () {
     document.getElementById('hero').innerHTML =  wizard.getCharacterHtml()
@@ -17,6 +19,7 @@ function render () {
 }
 
 function endGame(){
+    activeButton = false
     setTimeout(()=> {
         let endMessage = wizard.health === 0 && monster.health === 0 ? "No victors - all creatures are dead" : wizard.health > 0 ? "The Wizard Wins" : `The ${monster.name} is Victorious`;
     
@@ -29,26 +32,33 @@ function endGame(){
             <h3>${endMessage}</h3>
             <p class="end-emoji">${endEmoji}</p>
         </div>` 
+
+        activeButton = true
     },1000)
 }
 function attack () {
-    wizard.getDiceHtml();
-    monster.getDiceHtml();
-    wizard.takeDamage(monster.currentDiceScore);
-    monster.takeDamage(wizard.currentDiceScore);
-    if ( wizard.dead ) {
-        endGame()
-    } else if (monster.dead){
-        if (monstersArray.length > 0) {
-           setTimeout(()=> {
-            monster = getNewMonster()
-            render()
-           }, 1000) 
-        } else {
-            endGame()
+    if(activeButton){
+        wizard.getDiceHtml();
+        monster.getDiceHtml();
+        wizard.takeDamage(monster.currentDiceScore);
+        monster.takeDamage(wizard.currentDiceScore);
+        if ( wizard.dead ) {
+            endGame() 
+        } else if (monster.dead){
+            if (monstersArray.length > 0) {
+                activeButton = false
+               setTimeout(()=> {
+                monster = getNewMonster()
+                activeButton = true
+                render()
+               }, 1000) 
+            } else {
+                endGame()
+            }
         }
+        render()
+
     }
-    render()
 }
 
 
