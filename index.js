@@ -11,4 +11,12 @@ function render () {
     document.getElementById('monster').innerHTML = orc.getCharacterHtml()   
 }
 
+function attack () {
+    wizard.getDiceHtml();
+    orc.getDiceHtml();
+    render()
+}
+
+document.getElementById('attack-button').addEventListener('click', attack)
+
 render()
