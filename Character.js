@@ -28,13 +28,17 @@ function Character(data) {
     }
 
     this.takeDamage = function (attackScoreArray) {
+
         const totalAttackScore = attackScoreArray.reduce((tot, cur)=> {
             return tot + cur
         })
 
         this.health -= totalAttackScore
 
-        console.log(`${this.name} took ${totalAttackScore} damage`)
+        if (this.health <= 0) {
+            this.dead = true
+            this.health = 0
+        }
     }
 }
 

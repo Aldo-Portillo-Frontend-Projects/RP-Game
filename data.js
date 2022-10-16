@@ -5,6 +5,7 @@ const characterData = {
         health: 10,
         diceCount: 3,
         currentDiceScore: [],
+        dead: false,
     },
     monster: {
         name: "Orc",
@@ -12,6 +13,7 @@ const characterData = {
         health: 10,
         diceCount: 1,
         currentDiceScore: [],
+        dead: false,
     },
 }
 
