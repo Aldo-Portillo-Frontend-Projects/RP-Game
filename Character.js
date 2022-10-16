@@ -27,8 +27,14 @@ function Character(data) {
             </div>`;
     }
 
-    this.takeDamage = function () {
-        console.log(`${this.name} is damaged`)
+    this.takeDamage = function (attackScoreArray) {
+        const totalAttackScore = attackScoreArray.reduce((tot, cur)=> {
+            return tot + cur
+        })
+
+        this.health -= totalAttackScore
+
+        console.log(`${this.name} took ${totalAttackScore} damage`)
     }
 }
 
