@@ -7,7 +7,7 @@ const characterData = {
         currentDiceScore: [],
         dead: false,
     },
-    monster: {
+    orc: {
         name: "Orc",
         avatar: "./images/orc.png",
         health: 30,
