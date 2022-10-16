@@ -33,8 +33,15 @@ function attack () {
     monster.getDiceHtml();
     wizard.takeDamage(monster.currentDiceScore);
     monster.takeDamage(wizard.currentDiceScore);
-    if (wizard.dead || monster.dead ) {
+    if ( wizard.dead ) {
         endGame()
+    } else if (monster.dead){
+        if (monstersArray.length > 0) {
+            monster = getNewMonster()
+            render()
+        } else {
+            endGame()
+        }
     }
     render()
 }
@@ -43,6 +50,6 @@ function attack () {
 document.getElementById('attack-button').addEventListener('click', attack)
 
 const wizard = new Character(characterData.hero)
-const monster = getNewMonster()
+let monster = getNewMonster()
 
 render()
